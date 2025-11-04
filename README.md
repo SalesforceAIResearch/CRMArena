@@ -50,18 +50,18 @@ To access our org, use the following credentials.
 ```bash
 # the original CRMArena
 SALESFORCE_USERNAME=kh.huang+00dws000004urq4@salesforce.com
-SALESFORCE_PASSWORD=crmarenatest
+SALESFORCE_PASSWORD=crmarenatest0
 SALESFORCE_SECURITY_TOKEN=ugvBSBv0ArI7dayfqUY0wMGu
 
 # CRMArena-Pro B2B
 SALESFORCE_B2B_USERNAME=crmarena_b2b@gmaill.com
-SALESFORCE_B2B_PASSWORD=crmarenatest
+SALESFORCE_B2B_PASSWORD=crmarenatest0
 SALESFORCE_B2B_SECURITY_TOKEN=zdaqqSYBEQTjjLuq0zLUHkC3
 
 # CRMArena-Pro B2C
 SALESFORCE_B2C_USERNAME=crmarena_b2c@gmaill.com
-SALESFORCE_B2C_PASSWORD=crmarenatest
-SALESFORCE_B2C_SECURITY_TOKEN=2AQCtK8MnnV4lJdRNF0DGCs1
+SALESFORCE_B2C_PASSWORD=crmarenatest0
+SALESFORCE_B2C_SECURITY_TOKEN=QAqyxjPiLJGQuGAAG9YsOHKhn
 ```
 
 ### Accessing the Org via GUI
