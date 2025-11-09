@@ -66,16 +66,14 @@ SALESFORCE_B2C_SECURITY_TOKEN=QAqyxjPiLJGQuGAAG9YsOHKhn
 
 ### Accessing the Org via GUI
 
-To access the GUI of our Org, follow the steps below:
+Due to a recent Salesforce system update, GUI access to the orgs is no longer publicly available.
 
-1. Head to https://login.salesforce.com/.
-2. Type in the user name and password using the above credentials.
-<div align="center">
-<a href="https://pluslabnlp.github.io/"><img src="figures/GUI_login.png" height="400" ></a>
-</div>
+Researchers interested in obtaining GUI access can request it by emailing the following information to `kh.huang@salesforce.com`:
 
-3. You can now see the GUI of our Org.
-
+* First Name
+* Last Name
+* Email
+* Which Orgs you would like to access
 
 
 
