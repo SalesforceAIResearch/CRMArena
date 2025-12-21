@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Package xmlns="http://soap.sforce.com/2006/04/metadata">
+    <types>
+        <members>Issue__c.IssueDescription__c</members>
+        <members>Issue__c.OriginalId__c</members>
+        <members>VoiceCallTranscript__c.TranscriptBody__c</members>
+        <members>VoiceCallTranscript__c.OriginalId__c</members>
+        <name>CustomField</name>
+    </types>
+    <version>59.0</version>
+</Package>
+
