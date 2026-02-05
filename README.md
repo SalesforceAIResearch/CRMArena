@@ -30,7 +30,7 @@ This repo contains the evaluation code for the paper "<a href="https://arxiv.org
 
 
 ## 🔔News
-
+- **🚀 [2026-02] CRMArena-Pro has been accepted by TMLR!**
 - **🌟 [2025-05] Introducing [CRMArena-Pro](https://arxiv.org/abs/2505.18878) - a major expansion of the original CRMArena featuring enhanced support for diverse business applications, industry types, and interactive scenarios! 🚀**
 - **🎉 [2024-01] CRMArena has been accepted by NAACL 2025!**
 
@@ -166,7 +166,7 @@ If you find this work useful, please consider citing:
     year = "2025",
 }
 
-@article{huang-etal-2025-crmarena-pro,
+@article{huang-etal-2026-crmarena-pro,
     title = "CRMArena-Pro: Holistic Assessment of LLM Agents Across Diverse Business Scenarios and Interactions",
     author = "Huang, Kung-Hsiang  and
       Prabhakar, Akshara  and
@@ -177,8 +177,8 @@ If you find this work useful, please consider citing:
       Savarese, Silvio  and
       Xiong, Caiming  and
       Wu, Chien-Sheng",
-    journal = "arXiv preprint arXiv:2505.18878",
-    year = "2025",
+    journal = "Transactions on Machine Learning Research (TMLR)",
+    year = "2026",
 }
 ```
 
