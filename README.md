@@ -68,7 +68,7 @@ SALESFORCE_B2C_SECURITY_TOKEN=QAqyxjPiLJGQuGAAG9YsOHKhn
 
 Due to a recent Salesforce system update, GUI access to the orgs is no longer publicly available.
 
-Researchers interested in obtaining GUI access can request it by emailing the following information to `kh.huang@salesforce.com`:
+Researchers interested in obtaining GUI access can request it by emailing the following information to `othorat@salesforce.com`:
 
 * First Name
 * Last Name
