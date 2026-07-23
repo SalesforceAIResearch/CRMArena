@@ -1,0 +1,354 @@
+{
+  "org_type": "b2b",
+  "total_objects": 27,
+  "objects": [
+    {
+      "object": "User",
+      "field_count": 12,
+      "fields": {
+        "Alias": "Alias, usually a shortened version of the agent's name",
+        "Email": "Email address of the agent",
+        "EmailEncodingKey": "Email encoding, usually 'UTF-8'",
+        "FirstName": "First name of the agent",
+        "Id": "ID of the user",
+        "LanguageLocaleKey": "Language locale, e.g., 'en_US'",
+        "LastName": "Last name of the agent",
+        "LocaleSidKey": "Locale, e.g., 'en_US'",
+        "Phone": "Phone number of the agent",
+        "ProfileId": "ID of the user profile, typically 'Standard User' or a similar profile",
+        "TimeZoneSidKey": "Time zone, e.g., 'America/Los_Angeles'",
+        "Username": "Unique username for the agent in Salesforce"
+      }
+    },
+    {
+      "object": "Account",
+      "field_count": 7,
+      "fields": {
+        "Description": "Detailed description of the account",
+        "Id": "ID of the account",
+        "Industry": "Industry the account belongs to",
+        "Name": "Name of the account",
+        "NumberOfEmployees": "Number of employees in the account",
+        "Phone": "Phone number of the account",
+        "ShippingState": "State for shipping address"
+      }
+    },
+    {
+      "object": "Contact",
+      "field_count": 5,
+      "fields": {
+        "AccountId": "References Account object",
+        "Email": "Email address of the contact",
+        "FirstName": "First name of the contact",
+        "Id": "ID of the contact",
+        "LastName": "Last name of the contact"
+      }
+    },
+    {
+      "object": "Case",
+      "field_count": 12,
+      "fields": {
+        "AccountId": "References Account object",
+        "ClosedDate": "Date when the case was closed in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "ContactId": "ID of the contact associated with this case. References Contact object",
+        "CreatedDate": "Date when the case was created in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "Description": "Detailed description of the case",
+        "Id": "ID of the case",
+        "IssueId__c": "ID of the Issue associated with this case",
+        "OrderItemId__c": "ID of the Order Item associated with this case",
+        "OwnerId": "The latest owner of the case. References User object",
+        "Priority": "Priority of the case",
+        "Status": "Status of the case, e.g., 'New', 'Working', 'Escalated', etc",
+        "Subject": "Subject of the case"
+      }
+    },
+    {
+      "object": "Knowledge__kav",
+      "field_count": 5,
+      "fields": {
+        "FAQ_Answer__c": "Content of the knowledge article",
+        "Id": "ID of the knowledge article",
+        "Summary": "Summary of the article",
+        "Title": "Title of the knowledge article",
+        "UrlName": "Unique URL for the article"
+      }
+    },
+    {
+      "object": "ProductCategory",
+      "field_count": 3,
+      "fields": {
+        "CatalogId": "ID of the catalog this category belongs to",
+        "Id": "ID of the product category",
+        "Name": "Name of the product category"
+      }
+    },
+    {
+      "object": "Product2",
+      "field_count": 5,
+      "fields": {
+        "Description": "Description of the product",
+        "External_ID__c": "External ID for mapping purposes",
+        "Id": "ID of the product",
+        "IsActive": "Boolean to mark if the product is active",
+        "Name": "Name of the product"
+      }
+    },
+    {
+      "object": "ProductCategoryProduct",
+      "field_count": 3,
+      "fields": {
+        "Id": "ID of the product category product",
+        "ProductCategoryId": "References ProductCategory object",
+        "ProductId": "References Product2 object"
+      }
+    },
+    {
+      "object": "Pricebook2",
+      "field_count": 6,
+      "fields": {
+        "Description": "Description of the price book",
+        "Id": "ID of the price book",
+        "IsActive": "Boolean to mark if the price book is active",
+        "Name": "Name of the price book",
+        "ValidFrom": "Start date for the price book in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "ValidTo": "End date for the price book in 'YYYY-MM-DDTHH:MM:SSZ' format"
+      }
+    },
+    {
+      "object": "PricebookEntry",
+      "field_count": 4,
+      "fields": {
+        "Id": "ID of the price book entry",
+        "Pricebook2Id": "ID of the price book this entry belongs to. References Pricebook2 object",
+        "Product2Id": "ID of the product associated with this price book entry. References Product2 object",
+        "UnitPrice": "Unit price of the product"
+      }
+    },
+    {
+      "object": "Order",
+      "field_count": 6,
+      "fields": {
+        "AccountId": "ID of the customer account. References Account object",
+        "EffectiveDate": "Effective date of the order in 'YYYY-MM-DD' format",
+        "Id": "ID of the order",
+        "OwnerId": "ID of the agent who owns the order. References User object",
+        "Pricebook2Id": "ID of the price book this order belongs to. References Pricebook2 object",
+        "Status": "Status of the order, typically 'Draft' or 'Activated'"
+      }
+    },
+    {
+      "object": "OrderItem",
+      "field_count": 6,
+      "fields": {
+        "Id": "ID of the order item",
+        "OrderId": "ID of the order this item belongs to. References Order object",
+        "PriceBookEntryId": "ID of the price book entry for this order item. References PricebookEntry object",
+        "Product2Id": "ID of the product associated with this order item. References Product2 object",
+        "Quantity": "Quantity of the product ordered",
+        "UnitPrice": "Unit price of the product"
+      }
+    },
+    {
+      "object": "EmailMessage",
+      "field_count": 8,
+      "fields": {
+        "FromAddress": "Sender email address",
+        "Id": "ID of the email message",
+        "MessageDate": "Timestamp when the message was sent in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "ParentId": "ID of the case related to this email. References Case object",
+        "RelatedToId": "ID that links to objects like Opportunity and Case. Identical to ParentId when associated with a case. References Case and Opportunity objects.",
+        "Subject": "Subject of the email",
+        "TextBody": "Content of the email",
+        "ToIds": "List of recipient IDs"
+      }
+    },
+    {
+      "object": "LiveChatTranscript",
+      "field_count": 8,
+      "fields": {
+        "AccountId": "ID of the customer account. References Account object",
+        "Body": "Content of the chat transcript",
+        "CaseId": "ID of the case related to this chat. References Case object",
+        "ContactId": "References Contact object",
+        "EndTime": "Timestamp when the chat ended",
+        "Id": "ID of the live chat transcript",
+        "LiveChatVisitorId": "ID of the chat visitor",
+        "OwnerId": "ID of the agent who owned the chat. References User object"
+      }
+    },
+    {
+      "object": "Issue__c",
+      "field_count": 3,
+      "fields": {
+        "Description__c": "Detailed description of the issue",
+        "Id": "ID of the issue",
+        "Name": "The name/title of the issue"
+      }
+    },
+    {
+      "object": "CaseHistory__c",
+      "field_count": 6,
+      "fields": {
+        "CaseId__c": "ID of the case this history entry is related to. References Case object",
+        "CreatedDate": "The date when this change was made, in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "Field__c": "Specifies the field or type of change. One of ['Case Creation', 'Owner Assignment', 'Case Closed']",
+        "Id": "ID of the case history",
+        "NewValue__c": "The new value after the change. References User object if the type of change is 'Owner Assignment' else null",
+        "OldValue__c": "The previous value before the change. References User object if the type of change is 'Owner Assignment' else null"
+      }
+    },
+    {
+      "object": "Opportunity",
+      "field_count": 12,
+      "fields": {
+        "AccountId": "ID of the customer account. References Account object",
+        "Amount": "Monetary value of the opportunity in the default currency",
+        "CloseDate": "Expected close date of the opportunity",
+        "ContactId": "ID of the contact associated with this opportunity. References Contact object",
+        "ContractID__c": "ID of the contract associated with this opportunity. References Contract object",
+        "CreatedDate": "Date when the opportunity was created, in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "Description": "Detailed description of the opportunity",
+        "Id": "ID of the opportunity",
+        "Name": "Name of the opportunity",
+        "OwnerId": "ID of the agent who owns the opportunity. References User object",
+        "Probability": "Probability of winning the opportunity",
+        "StageName": "Stage of the opportunity. One of ['Qualification', 'Discovery', 'Quote', 'Negotiation', 'Closed']"
+      }
+    },
+    {
+      "object": "OpportunityLineItem",
+      "field_count": 6,
+      "fields": {
+        "Id": "ID of the opportunity line item",
+        "OpportunityId": "ID of the opportunity associated with this line item. References Opportunity object",
+        "PricebookEntryId": "ID of the price book entry for this line item. References PricebookEntry object",
+        "Product2Id": "ID of the product associated with this line item. References Product2 object",
+        "Quantity": "Quantity of the product ordered",
+        "TotalPrice": "Total price of the product. Calculated as Quantity * UnitPrice * (1 - Discount/100)"
+      }
+    },
+    {
+      "object": "Quote",
+      "field_count": 9,
+      "fields": {
+        "AccountId": "ID of the customer account. References Account object",
+        "ContactId": "ID of the contact associated with this quote. References Contact object",
+        "CreatedDate": "Date when the quote was created, in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "Description": "Detailed description of the quote",
+        "ExpirationDate": "Expiration date of the quote, in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "Id": "ID of the quote",
+        "Name": "Name of the quote",
+        "OpportunityId": "ID of the opportunity associated with this quote. References Opportunity object",
+        "Status": "Status of the quote. One of ['Draft', 'Needs Review', 'In Review', 'Approved', 'Rejected', 'Presented', 'Accepted', 'Denied']"
+      }
+    },
+    {
+      "object": "QuoteLineItem",
+      "field_count": 9,
+      "fields": {
+        "Discount": "Discount applied to the product",
+        "Id": "ID of the quote line item",
+        "OpportunityLineItemId": "ID of the opportunity line item associated with this quote line item. References OpportunityLineItem object",
+        "PricebookEntryId": "ID of the price book entry for this line item. References PricebookEntry object",
+        "Product2Id": "ID of the product associated with this line item. References Product2 object",
+        "Quantity": "Quantity of the product ordered",
+        "QuoteId": "ID of the quote associated with this line item. References Quote object",
+        "TotalPrice": "Total price of the product. Calculated as Quantity * UnitPrice * (1 - Discount/100)",
+        "UnitPrice": "Unit price of the product"
+      }
+    },
+    {
+      "object": "Contract",
+      "field_count": 8,
+      "fields": {
+        "AccountId": "ID of the customer account. References Account object",
+        "CompanySignedDate": "Date when the company signed the contract, in 'YYYY-MM-DD' format",
+        "ContractTerm": "Duration of the contract in months",
+        "CustomerSignedDate": "Date when the customer signed the contract, in 'YYYY-MM-DD' format",
+        "Description": "Detailed description of the contract terms and conditions",
+        "Id": "ID of the contract",
+        "StartDate": "Date when the contract becomes effective, in 'YYYY-MM-DD' format",
+        "Status": "Status of the contract. One of ['In approval Process', 'Activated', 'Draft', 'Rejected', 'Negotiating', 'Awaiting Signature', 'Signature Declined', 'Signed', 'Canceled', 'Contract Terminated']"
+      }
+    },
+    {
+      "object": "VoiceCallTranscript__c",
+      "field_count": 6,
+      "fields": {
+        "Body__c": "Content of the voice call transcript",
+        "CreatedDate": "Date when the voice call transcript was created, in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "EndTime__c": "Timestamp when the voice call transcript ended, in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "Id": "ID of the voice call transcript",
+        "LeadId__c": "ID of the lead associated with this voice call transcript. References Lead object",
+        "OpportunityId__c": "ID of the opportunity associated with this voice call transcript. References Opportunity object"
+      }
+    },
+    {
+      "object": "Task",
+      "field_count": 8,
+      "fields": {
+        "ActivityDate": "Date when the task is due, in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "Description": "Detailed description of the task",
+        "Id": "ID of the task",
+        "OwnerId": "ID of the agent who owns the task. References User object",
+        "Priority": "Priority of the task. One of ['Low', 'Medium', 'High', 'Urgent']",
+        "Status": "Status of the task. One of ['Not Started', 'In Progress', 'Completed', 'Deferred', 'Waiting']",
+        "Subject": "Subject of the task",
+        "WhatId": "ID of the opportunity associated with this task. References Opportunity object"
+      }
+    },
+    {
+      "object": "Event",
+      "field_count": 9,
+      "fields": {
+        "Description": "Detailed description of the event",
+        "DurationInMinutes": "Duration of the event in minutes",
+        "Id": "ID of the event",
+        "IsAllDayEvent": "Boolean to mark if the event is an all-day event",
+        "Location": "Location of the event",
+        "OwnerId": "ID of the agent who owns the event. References User object",
+        "StartDateTime": "Start datetime of the event, in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "Subject": "Subject of the event",
+        "WhatId": "ID of the opportunity associated with this event. References Opportunity object"
+      }
+    },
+    {
+      "object": "Territory2",
+      "field_count": 3,
+      "fields": {
+        "Description": "A comma separated list of territories/states (e.g. CA,IL,AL)",
+        "Id": "ID of the territory",
+        "Name": "Name of the territory"
+      }
+    },
+    {
+      "object": "UserTerritory2Association",
+      "field_count": 3,
+      "fields": {
+        "Id": "ID of the user territory association",
+        "Territory2Id": "ID of the territory associated with the agent. References Territory2 object",
+        "UserId": "ID of the agent who is associated with the territory. References User object"
+      }
+    },
+    {
+      "object": "Lead",
+      "field_count": 14,
+      "fields": {
+        "Company": "Company name of the lead",
+        "ConvertedAccountId": "ID of the Account record created when the Lead is converted. References Account object",
+        "ConvertedContactId": "ID of the Contact record created when the Lead is converted. References Contact object",
+        "ConvertedDate": "Date when the lead was converted in 'YYYY-MM-DD' format",
+        "CreatedDate": "Date when the lead was created in 'YYYY-MM-DDTHH:MM:SSZ' format",
+        "Email": "Email address of the lead",
+        "FirstName": "First name of the lead",
+        "Id": "ID of the lead",
+        "IsConverted": "Boolean indicating whether the lead has been converted",
+        "LastName": "Last name of the lead",
+        "OwnerId": "ID of the agent who owns the lead. References User object",
+        "Phone": "Phone number of the lead",
+        "Status": "Status of the lead. One of ['New', 'Contacted', 'Qualified', 'Proposal', 'Negotiation', 'Closed']",
+        "Title": "Job title of the lead"
+      }
+    }
+  ]
+}
