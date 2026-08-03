@@ -1,4 +1,6 @@
 from .functions import *
+from .superface_functions import Superface
+from .superface_tool_mapper import map_superface_tool_to_function
 
 TOOLS = [
     get_agents_with_max_cases,
@@ -32,3 +34,13 @@ TOOLS_FULL = TOOLS + [issue_soql_query, issue_sosl_query]
 print(len(TOOLS_FULL))
 assert all(tool.__info__ for tool in TOOLS)
 assert all(tool.__info__ for tool in TOOLS_FULL)
+
+superface = Superface(
+  api_key=os.getenv("SUPERFACE_API_KEY"),
+  base_url=os.getenv("SUPERFACE_URL")
+)
+
+# Map each Superface tool using the mapper
+raw_tools = superface.get_tools(user_id=os.getenv("SUPERFACE_USER_ID"))
+TOOLS_SUPERFACE = [map_superface_tool_to_function(tool) for tool in raw_tools]
+TOOLS_SUPERFACE.append(respond)
