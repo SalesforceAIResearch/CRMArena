@@ -1,0 +1,33 @@
+{
+  "orgName": "CRMArena Test Org",
+  "edition": "Enterprise",
+  "features": [
+    "EnableSetPasswordInApi",
+    "LiveAgent",
+    "Communities",
+    "B2BCommerce"
+  ],
+  "settings": {
+    "lightningExperienceSettings": {
+      "enableS1DesktopEnabled": true
+    },
+    "mobileSettings": {
+      "enableS1EncryptedStoragePref2": false
+    },
+    "communitiesSettings": {
+      "enableNetworksEnabled": true
+    },
+    "commerceSettings": {
+      "commerceEnabled": true
+    },
+    "quoteSettings": {
+      "enableQuote": true
+    },
+    "territory2Settings": {
+      "enableTerritoryManagement2": true
+    },
+    "liveAgentSettings": {
+      "enableLiveAgent": true
+    }
+  }
+}

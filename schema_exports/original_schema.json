@@ -1,0 +1,163 @@
+[
+  {
+    "object": "User",
+    "fields": {
+      "Alias": "Alias, usually a shortened version of the agent's name",
+      "Email": "Email address of the agent",
+      "EmailEncodingKey": "Email encoding, usually 'UTF-8'",
+      "FirstName": "First name of the agent",
+      "LanguageLocaleKey": "Language locale, e.g., 'en_US'",
+      "LastName": "Last name of the agent",
+      "LocaleSidKey": "Locale, e.g., 'en_US'",
+      "Phone": "Phone number of the agent",
+      "TimeZoneSidKey": "Time zone, e.g., 'America/Los_Angeles'",
+      "Username": "Unique username for the agent in Salesforce"
+    }
+  },
+  {
+    "object": "Account",
+    "fields": {
+      "FirstName": "First name of the customer",
+      "LastName": "Last name of the customer",
+      "PersonEmail": "Email address of the customer",
+      "Phone": "Phone number of the customer",
+      "RecordTypeId": "Record type ID, typically for 'Person Account'",
+      "ShippingCity": "Shipping city of the customer",
+      "ShippingState": "Shipping state of the customer"
+    }
+  },
+  {
+    "object": "Contact",
+    "fields": {
+      "AccountId": "References Account object",
+      "Email": "Email address of the contact",
+      "FirstName": "First name of the contact",
+      "LastName": "Last name of the contact",
+      "OwnerId": "References User object"
+    }
+  },
+  {
+    "object": "Case",
+    "fields": {
+      "AccountId": "References Account object",
+      "ClosedDate": "Date when the case was closed in 'YYYY-MM-DDTHH:MM:SSZ' format",
+      "ContactId": "ID of the contact associated with this case. References Contact object",
+      "CreatedDate": "Date when the case was created in 'YYYY-MM-DDTHH:MM:SSZ' format",
+      "Description": "Detailed description of the case",
+      "IssueId__c": "ID of the Issue associated with this case",
+      "OrderItemId__c": "ID of the Order Item associated with this case",
+      "OwnerId": "The latest owner of the case. References User object",
+      "Priority": "Priority of the case",
+      "Status": "Status of the case, e.g., 'New', 'Working', 'Escalated', etc",
+      "Subject": "Subject of the case"
+    }
+  },
+  {
+    "object": "Knowledge__kav",
+    "fields": {
+      "FAQ_Answer__c": "Content of the knowledge article",
+      "Summary": "Summary of the article",
+      "Title": "Title of the knowledge article",
+      "UrlName": "Unique URL for the article"
+    }
+  },
+  {
+    "object": "ProductCategory",
+    "fields": {
+      "CatalogId": "ID of the catalog this category belongs to",
+      "Name": "Name of the product category"
+    }
+  },
+  {
+    "object": "Product2",
+    "fields": {
+      "Description": "Description of the product",
+      "External_ID__c": "External ID for mapping purposes",
+      "IsActive": "Boolean to mark if the product is active",
+      "Name": "Name of the product"
+    }
+  },
+  {
+    "object": "ProductCategoryProduct",
+    "fields": {
+      "ProductCategoryId": "References ProductCategory object",
+      "ProductId": "References Product2 object"
+    }
+  },
+  {
+    "object": "Pricebook2",
+    "fields": {
+      "Description": "Description of the price book",
+      "IsActive": "Boolean to mark if the price book is active",
+      "Name": "Name of the price book",
+      "ValidFrom": "Start date for the price book in 'YYYY-MM-DDTHH:MM:SSZ' format",
+      "ValidTo": "End date for the price book in 'YYYY-MM-DDTHH:MM:SSZ' format"
+    }
+  },
+  {
+    "object": "PricebookEntry",
+    "fields": {
+      "Pricebook2Id": "ID of the price book this entry belongs to. References Pricebook2 object",
+      "Product2Id": "ID of the product associated with this price book entry. References Product2 object",
+      "UnitPrice": "Unit price of the product"
+    }
+  },
+  {
+    "object": "Order",
+    "fields": {
+      "AccountId": "ID of the customer account. References Account object",
+      "EffectiveDate": "Effective date of the order in 'YYYY-MM-DD' format",
+      "Pricebook2Id": "ID of the price book this order belongs to. References Pricebook2 object",
+      "Status": "Status of the order, typically 'Draft' or 'Activated'"
+    }
+  },
+  {
+    "object": "OrderItem",
+    "fields": {
+      "OrderId": "ID of the order this item belongs to. References Order object",
+      "PriceBookEntryId": "ID of the price book entry for this order item. References PricebookEntry object",
+      "Product2Id": "ID of the product associated with this order item. References Product2 object",
+      "Quantity": "Quantity of the product ordered",
+      "UnitPrice": "Unit price of the product"
+    }
+  },
+  {
+    "object": "EmailMessage",
+    "fields": {
+      "FromAddress": "Sender email address",
+      "MessageDate": "Timestamp when the message was sent",
+      "ParentId": "ID of the case related to this email. References Case object",
+      "Subject": "Subject of the email",
+      "TextBody": "Content of the email",
+      "ToIds": "List of recipient IDs"
+    }
+  },
+  {
+    "object": "LiveChatTranscript",
+    "fields": {
+      "AccountId": "ID of the customer account. References Account object",
+      "Body": "Content of the chat transcript",
+      "CaseId": "ID of the case related to this chat. References Case object",
+      "ContactId": "References Contact object",
+      "EndTime": "Timestamp when the chat ended",
+      "LiveChatVisitorId": "ID of the chat visitor",
+      "OwnerId": "ID of the agent who owned the chat. References User object"
+    }
+  },
+  {
+    "object": "Issue__c",
+    "fields": {
+      "Name": "The name/title of the issue"
+    }
+  },
+  {
+    "object": "CaseHistory__c",
+    "fields": {
+      "CaseId__c": "ID of the case this history entry is related to. References Case object",
+      "CreatedDate": "The date when this change was made",
+      "Field__c": "Specifies the field or type of change. One of ['Case Creation', 'Owner Assignment', 'Case Closed']",
+      "NewValue__c": "The new value after the change. References User object if the type of change is 'Owner Assignment' else null",
+      "OldValue__c": "The previous value before the change. References User object if the type of change is 'Owner Assignment' else null"
+    }
+  }
+]
