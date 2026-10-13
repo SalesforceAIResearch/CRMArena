@@ -4,7 +4,7 @@ from crm_sandbox.agents import ChatAgent, ToolCallAgent
 from crm_sandbox.agents.utils import BEDROCK_MODELS_MAP, TOGETHER_MODELS_MAP, VERTEX_MODELS_MAP
 from crm_sandbox.data.assets import TASKS_ORIGINAL, SCHEMA_ORIGINAL, TASKS_B2B, TASKS_B2B_INTERACTIVE, TASKS_B2C, TASKS_B2C_INTERACTIVE, B2B_SCHEMA, B2C_SCHEMA, EXTERNAL_FACING_TASKS
 from crm_sandbox.env.env import ChatEnv, ToolEnv, InteractiveChatEnv
-from crm_sandbox.env import TOOLS, TOOLS_FULL
+from crm_sandbox.env import TOOLS, TOOLS_FULL, TOOLS_SUPERFACE
 import traceback
 import argparse
 from datetime import datetime
@@ -31,6 +31,8 @@ def run():
         selected_tasks = [task for task in TASKS_NATURAL if task["task"] in args.task_category.split(",")]
     else:
         selected_tasks = [task for task in TASKS_NATURAL if task["task"] == args.task_category]
+
+    selected_tasks = [task for task in selected_tasks if task["idx"] == 531]
         
     # Load checkpoint if it exists
     completed_tasks = {}
@@ -81,6 +83,17 @@ def run():
                 f"not '{args.org_type}'."
             )
         env = ToolEnv(tools=TOOLS_FULL, tasks=selected_tasks, org_type=args.org_type)
+    elif args.agent_strategy == "tool_call_superface":
+        if args.interactive:
+            raise NotImplementedError(
+                f"Interactive mode is not supported for the '{args.agent_strategy}' strategy."
+            )
+        if args.org_type != "original":
+            raise NotImplementedError(
+                f"The '{args.agent_strategy}' strategy is only supported for the 'original' org_type (CRMArena), "
+                f"not '{args.org_type}'."
+            )
+        env = ToolEnv(tools=TOOLS_SUPERFACE, tasks=selected_tasks, org_type=args.org_type)
     else:
         # Fallback for unknown strategies, though argparse choices should prevent this.
         raise ValueError(f"Unsupported agent_strategy: {args.agent_strategy}")
@@ -172,7 +185,7 @@ if __name__ == "__main__":
         "--agent_strategy",
         type=str,
         default="react",
-        choices=["tool_call", "act", "react", "tool_call_flex"],
+        choices=["tool_call", "act", "react", "tool_call_flex", "tool_call_superface"],
     )
     parser.add_argument(
         "--agent_eval_mode",
