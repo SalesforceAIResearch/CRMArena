@@ -49,9 +49,9 @@ To access our org, use the following credentials.
 
 ```bash
 # the original CRMArena
-SALESFORCE_USERNAME=kh.huang+00dws000004urq4@salesforce.com
-SALESFORCE_PASSWORD=crmarenatest0
-SALESFORCE_SECURITY_TOKEN=ugvBSBv0ArI7dayfqUY0wMGu
+SALESFORCE_USERNAME=crmarena@gmaill.com
+SALESFORCE_PASSWORD=arenacrm123
+SALESFORCE_SECURITY_TOKEN=NGkTXVEEwGVcJMBjEIvo4oml
 
 # CRMArena-Pro B2B
 SALESFORCE_B2B_USERNAME=crmarenapro_b2b@gmaill.com
