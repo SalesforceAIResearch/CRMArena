@@ -6,6 +6,7 @@ from concurrent.futures import ThreadPoolExecutor
 from crm_sandbox.agents.utils import get_all_metrics
 import litellm
 import json
+import re
 
 class ChatEnv(object):
     def __init__(
